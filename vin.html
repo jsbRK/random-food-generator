@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free VIN Decoder Tool. Decode any Vehicle Identification Number instantly to reveal complete vehicle specifications, history, and manufacturer details. High quality, 100% secure.">
+    <meta name="keywords"
+        content="VIN decoder, vehicle identification number, VIN lookup, VIN check, car VIN decoder, free VIN decoder, VIN number lookup, decode VIN, vehicle specs, car history">
+    <meta name="author" content="VIN Decoder Tool">
+    <meta name="robots" content="index, follow, max-snippet, max-image-preview">
+    <link rel="canonical" href="https://vindecoder.toolifysite.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="VIN Decoder Best Free Tool for Vehicle Lookup">
+    <meta property="og:description"
+        content="Decode any VIN number instantly to reveal vehicle specifications, manufacturer details, engine type, and production year. 100% free with no login required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vindecoder.toolifysite.com/">
+    <meta property="og:image" content="https://vindecoder.toolifysite.com/assets/icon/favicon.svg">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VIN Decoder Best Free Tool for Vehicle Lookup">
+    <meta name="twitter:description"
+        content="Decode any VIN number instantly to reveal vehicle specifications, manufacturer details, engine type, and production year. 100% free with no login required.">
+    <meta name="twitter:url" content="https://vindecoder.toolifysite.com/">
+    <meta name="twitter:image" content="https://vindecoder.toolifysite.com/assets/icon/favicon.svg">
+    <meta name="twitter:locale" content="en_US">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="en" href="https://vindecoder.toolifysite.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://vindecoder.toolifysite.com/" />
+    <title>VIN Decoder Best Free Tool for Vehicle Lookup</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="./assets/icon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./assets/icon/favicon.svg" sizes="any" />
+    <link rel="shortcut icon" href="./assets/icon/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="VIN Decoder ToolifySite" />
+    <link rel="manifest" href="./assets/icon/site.webmanifest" />
+
+    <!-- Fonts -->
+    <link rel="preload" href="./assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="preload" href="./assets/style/style.css" as="style" />
+    <link rel="stylesheet" href="./assets/style/style.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="./assets/style/style.css" />
+    <link rel="stylesheet" href="output.css" />
+
+    <!-- Page-Specific Styles -->
+    <style>
+        /* ── Loading Spinner ─────────────────── */
+        @keyframes spin-slow {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .animate-spin-slow {
+            animation: spin-slow 2s linear infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        .pulse-ring {
+            animation: pulse-ring 1.5s ease-out infinite;
+        }
+
+        /* ── Download Button Grid ────────────── */
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        @media (max-width: 640px) {
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── Action Buttons Row ──────────────── */
+        .action-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.625rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .action-btn:active {
+            transform: scale(0.97);
+        }
+
+        .action-btn-outline {
+            background: var(--glass-bg);
+            border-color: var(--input-border);
+            color: var(--text-primary);
+        }
+
+        .action-btn-outline:hover {
+            border-color: #0ea5e9;
+            background: rgba(14, 165, 233, 0.05);
+        }
+
+        .dark .action-btn-outline:hover {
+            border-color: #38bdf8;
+            background: rgba(56, 189, 248, 0.08);
+        }
+
+        /* ── Input Icon Wrapper ──────────────── */
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #94a3b8;
+            transition: color 0.2s;
+        }
+
+        .input-wrapper input:focus~.input-icon,
+        .input-wrapper input:not(:placeholder-shown)~.input-icon {
+            color: #0ea5e9;
+        }
+
+        .dark .input-wrapper input:focus~.input-icon,
+        .dark .input-wrapper input:not(:placeholder-shown)~.input-icon {
+            color: #38bdf8;
+        }
+
+        .input-wrapper input {
+            padding-left: 44px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding-right: 48px;
+        }
+
+        .input-wrapper input::placeholder {
+            font-family: var(--font-primary);
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .input-wrapper.error input {
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+
+        .input-wrapper.success input {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        /* Inline clear button */
+        .clear-icon-btn {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            cursor: pointer;
+            display: none;
+        }
+
+        .clear-icon-btn:hover {
+            color: #ef4444;
+        }
+
+        /* ── Floating Badge ──────────────────── */
+        .float-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(168, 85, 247, 0.1));
+            color: #0ea5e9;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .dark .float-badge {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.1));
+            color: #38bdf8;
+            border-color: rgba(56, 189, 248, 0.2);
+        }
+
+        /* ── How-To Steps ────────────────────── */
+        .step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+            margin: 0 auto;
+        }
+
+        /* ── Specific VIN UI ─────────────────── */
+        .vin-char-count {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #94a3b8;
+        }
+
+        .vin-char-count.valid {
+            color: #10b981;
+        }
+
+        .vin-char-count.invalid {
+            color: #ef4444;
+        }
+
+        /* Tabs */
+        .tabs-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--input-bg);
+            padding: 0.375rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--input-border);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 0.625rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.375rem;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+            background: rgba(14, 165, 233, 0.05);
+        }
+
+        .tab-btn.active {
+            color: white;
+            background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-card {
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 0.75rem;
+            padding: 1rem;
+        }
+
+        .info-label {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-label svg {
+            width: 14px;
+            height: 14px;
+            color: #0ea5e9;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .info-value.empty {
+            color: var(--text-tertiary);
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* VIN Structure Breakdown */
+        .vin-structure-chars {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .vin-structural-char {
+            width: 32px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            border-radius: 0.375rem;
+            border: 2px solid;
+            font-size: 0.875rem;
+        }
+
+        .vin-wmi {
+            background: rgba(14, 165, 233, 0.1);
+            border-color: rgba(14, 165, 233, 0.3);
+            color: #0ea5e9;
+        }
+
+        .vin-vds {
+            background: rgba(168, 85, 247, 0.1);
+            border-color: rgba(168, 85, 247, 0.3);
+            color: #a855f7;
+        }
+
+        .vin-vis {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.3);
+            color: #10b981;
+        }
+
+        /* Recent Searches */
+        .recent-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 0.75rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .recent-item:hover {
+            border-color: #0ea5e9;
+            transform: translateX(4px);
+        }
+
+        /* Brand Grid */
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .brand-card {
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .brand-card:hover {
+            border-color: #0ea5e9;
+            transform: translateY(-2px);
+        }
+
+        .logo-img {
+            display: block;
+            margin: auto;
+            padding-bottom: 4px;
+        }
+
+        .logo-div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        /* Skeleton loader */
+        .skeleton-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .5;
+            }
+        }
+    </style>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "VIN Decoder",
+      "url": "https://vindecoder.toolifysite.com/",
+      "description": "Top, Fast, Best and Lifetime Free Unlimited online VIN Decoder. 100% confidential and secure, no signup or login required."
+    }
+    </script>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "VIN Decoder",
+      "url": "https://vindecoder.toolifysite.com/",
+      "operatingSystem": "All",
+      "applicationCategory": "Utilities",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Decode any VIN instantly. Free, fast, and no login required. Reveal vehicle specifications, manufacturer details, engine type, and production year."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Is the VIN Decoder free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, this website is Top, Fast, Best and Lifetime Free Unlimited for everyone. You can decode as many VINs as you need without any costs or hidden fees."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What is a Vehicle Identification Number (VIN)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A VIN is a unique 17-character alphanumeric code assigned to every motor vehicle during manufacturing. It acts as the vehicle's fingerprint containing encoded information about its manufacturer, model, engine type, and production year."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Why are the letters I, O, and Q not allowed in VINs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The letters I, O, and Q are excluded from VINs to prevent confusion with the numbers 1, 0, and 9 respectively. This standardization was established to ensure accurate identification."
+        }
+      }, {
+        "@type": "Question",
+        "name": "How accurate is this VIN Decoder?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our VIN Decoder uses the official NHTSA vPIC (Vehicle Product Information Catalog) API, which is the most authoritative source for vehicle identification data in the United States."
+        }
+      }]
+    }
+    </script>
+</head>
+
+<body class="min-h-screen transition-colors duration-300 bg-gradient-light dark:bg-gradient-dark">
+
+    <!-- ═══════════════════════════════════════
+       HEADER
+       ═══════════════════════════════════════ -->
+    <header
+        class="relative z-50 glass-card backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <nav class="mx-auto px-2 sm:px-4 h-20 flex items-center justify-between relative">
+            <!-- Logo -->
+            <div class="flex-shrink-0 z-10">
+                <a href="https://vindecoder.toolifysite.com/" class="flex items-center sm:space-x-3">
+                    <img src="./assets/icon/favicon.svg" alt="VIN Decoder Logo" class="w-14 sm:w-18 h-14 sm:h-18">
+                    <div
+                        class="bg-clip-text text-lg md:text-xl lg:text-2xl font-bold text-transparent bg-gradient-to-r from-sky-600 to-purple-600 dark:from-sky-400 dark:to-purple-400 hover:from-sky-500 hover:to-purple-500 transition-all duration-300">
+                        <div class="flex">
+                            <span>VIN</span>
+                        </div>
+                        <div class="text-right">
+                            <span>Decoder</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Navigation Nav (Centered) -->
+            <div
+                class="hidden md:flex items-center gap-6 absolute left-1/2 transform -translate-x-1/5 text-base lg:text-lg font-medium text-gray-700 dark:text-gray-300">
+                <a href="https://toolifysite.com/"
+                    class="hover:text-sky-600 dark:hover:text-sky-400 link-animated transition-colors duration-200">Home</a>
+                <a href="#main-tools"
+                    class="hover:text-sky-600 dark:hover:text-sky-400 link-animated transition-colors duration-200">Tools
+                    List</a>
+                <a href="https://toolifysite.com/contact"
+                    class="hover:text-sky-600 dark:hover:text-sky-400 link-animated transition-colors duration-200">Contact</a>
+            </div>
+
+            <!-- Theme Toggle & Mobile Nav (Right) -->
+            <div class="flex items-center gap-2.5 sm:gap-5 z-10 ml-2">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" type="button"
+                    class="relative w-13 sm:w-15 h-8 sm:h-9 rounded-full cursor-pointer theme-toggle-bg transition-colors duration-300"
+                    aria-label="Toggle dark mode" role="switch" aria-checked="false">
+                    <span class="sr-only">Toggle theme</span>
+                    <div
+                        class="theme-toggle-thumb absolute top-1 left-1 w-6 sm:w-7 h-6 sm:h-7 rounded-full bg-white shadow-md flex items-center justify-center transition-transform duration-300 sm:dark:translate-x-6 dark:translate-x-5">
+                        <!-- Sun Icon -->
+                        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-amber-500 dark:hidden" fill="currentColor"
+                            viewBox="0 0 20 20" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <!-- Moon Icon -->
+                        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-indigo-500 hidden dark:block" fill="currentColor"
+                            viewBox="0 0 20 20" aria-hidden="true">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                        </svg>
+                    </div>
+                </button>
+
+                <!-- Mobile Nav Button -->
+                <button id="mobile-nav-btn" type="button"
+                    class="md:hidden p-0.5 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 border-2 border-gray-700 dark:border-gray-200 transition-colors"
+                    aria-label="Open mobile nav" aria-expanded="false">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path id="nav-open-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                        <path id="nav-close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Nav (Hidden by default) -->
+        <div id="mobile-nav"
+            class="hidden md:hidden absolute top-20 left-0 w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-lg transition-all duration-300 transform origin-top z-40">
+            <div class="mx-auto px-4 py-4 flex flex-col gap-4 text-lg font-medium text-gray-700 dark:text-gray-300">
+                <a href="https://toolifysite.com/"
+                    class="active:text-sky-600 dark:active:text-sky-400 py-2 border-b border-gray-100 dark:border-gray-800">Home</a>
+                <a href="#main-tools"
+                    class="active:text-sky-600 dark:active:text-sky-400 py-2 border-b border-gray-100 dark:border-gray-800">Main
+                    Tools List</a>
+                <a href="https://toolifysite.com/about"
+                    class="active:text-sky-600 dark:active:text-sky-400 py-2 border-b border-gray-100 dark:border-gray-800">About</a>
+                <a href="https://toolifysite.com/contact"
+                    class="active:text-sky-600 dark:active:text-sky-400 py-2 border-b border-gray-100 dark:border-gray-800">Contact</a>
+                <a href="https://toolifysite.com/privacy-policy"
+                    class="active:text-sky-600 dark:active:text-sky-400 py-2">Privacy
+                    Policy</a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ═══════════════════════════════════════
+       MAIN CONTENT
+       ═══════════════════════════════════════ -->
+    <main id="main-content" class="mx-auto px-4 py-8 md:py-12">
+
+        <!-- ── Hero Section ──────────────────── -->
+        <section class="max-w-4xl mx-auto">
+            <div class="text-center mb-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full float-badge">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    <span>Free &amp; Instant VIN Lookup</span>
+                </div>
+                <h1
+                    class="p-3 text-4xl md:text-5xl lg:text-6xl font-bold mb-1 glow-text bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-purple-600 dark:from-sky-400 dark:to-purple-400 hover:from-sky-500 hover:to-purple-500 transition-all duration-300">
+                    VIN Decoder
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Decode any Vehicle Identification Number instantly to reveal complete vehicle specifications,
+                    history, and manufacturer details.
+                </p>
+            </div>
+
+            <!-- ── Decoder Card ─────────────── -->
+            <div class="glass-card rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-10 glow-card border-card">
+
+                <!-- Input Context -->
+                <div class="flex justify-between items-end mb-3">
+                    <label for="vin-input" class="block text-base font-semibold text-gray-700 dark:text-gray-200">
+                        Enter VIN Number
+                    </label>
+                    <span id="char-count" class="vin-char-count">0 / 17</span>
+                </div>
+
+                <!-- URL Input -->
+                <div class="mb-4">
+                    <div class="input-wrapper" id="vin-input-wrapper">
+                        <input type="text" id="vin-input" placeholder="Type or paste 17-character VIN..."
+                            class="input-field w-full px-4 py-4 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none text-lg"
+                            autocomplete="off" spellcheck="false" maxlength="17">
+                        <!-- VIN icon -->
+                        <div class="input-icon">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                        <!-- Clear Btn -->
+                        <button type="button" id="clear-input-btn" class="clear-icon-btn">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Validation Message -->
+                <div id="validation-msg" class="text-left hidden mb-4">
+                    <p id="validation-text" class="text-sm font-medium py-2.5 px-3 rounded-lg flex items-center gap-2">
+                        <!-- Icon injected by JS -->
+                        <span></span>
+                    </p>
+                </div>
+
+                <!-- Quick Actions (Sample/Recent) -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <button id="sample-vin-btn" type="button"
+                        class="action-btn action-btn-outline py-1.5 px-3 text-xs md:text-sm rounded-lg">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                        Sample VIN
+                    </button>
+                    <button id="recent-quick-btn" type="button"
+                        class="action-btn action-btn-outline py-1.5 px-3 text-xs md:text-sm rounded-lg">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Recent Updates
+                    </button>
+                </div>
+
+
+                <!-- Submit Button -->
+                <div class="mb-4">
+                    <button id="decode-btn" type="button" disabled
+                        class="btn-blue glow-blue w-full flex justify-center items-center gap-2 px-6 py-4 rounded-xl text-white font-semibold text-lg cursor-pointer transition-all duration-200 transform active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                        Decode VIN
+                    </button>
+                </div>
+
+                <!-- ── Loading State ── -->
+                <div id="loading-section" class="hidden py-8 text-center flex flex-col items-center">
+                    <svg class="animate-spin-slow w-10 h-10 text-sky-500 mb-4" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-1">Decoding VIN...</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">Fetching vehicle data from official sources
+                    </p>
+
+                    <div class="w-full max-w-lg space-y-3">
+                        <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mx-auto skeleton-pulse"></div>
+                        <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full mx-auto skeleton-pulse"></div>
+                        <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6 mx-auto skeleton-pulse"></div>
+                        <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2 mx-auto skeleton-pulse"></div>
+                    </div>
+                </div>
+
+                <!-- ── Preview & Downloads (Hidden until fetched) ── -->
+                <div id="results-section" class="hidden mt-8">
+
+                    <!-- Divider -->
+                    <div class="relative my-6">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-200 dark:border-gray-700"></div>
+                        </div>
+                        <div class="relative flex justify-center">
+                            <span
+                                class="bg-sky-100 dark:bg-sky-600 px-4 py-1 rounded-full text-xs font-bold text-sky-600 dark:text-white uppercase tracking-wider">
+                                Report Ready
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Header & Badge -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-white flex items-center gap-2">
+                            Full Vehicle Report
+                            <span id="results-vin-badge"
+                                class="text-xs font-mono font-bold px-2 py-1 bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 border border-sky-200 dark:border-sky-800 rounded"></span>
+                        </h2>
+
+                        <!-- Download Row -->
+                        <div class="flex flex-wrap gap-2">
+                            <button id="download-report-btn" type="button"
+                                class="btn-green glow-green flex justify-center items-center gap-2 px-3 py-2 rounded-lg text-white font-semibold cursor-pointer text-sm">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                                Download .TXT
+                            </button>
+                            <button id="copy-result-btn" type="button"
+                                class="action-btn action-btn-outline py-2 px-3 text-sm rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                </svg>
+                            </button>
+                            <button id="share-result-btn" type="button"
+                                class="action-btn action-btn-outline py-2 px-3 text-sm rounded-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tabs Header -->
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-tab="vehicle-info">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Vehicle Info
+                        </button>
+                        <button class="tab-btn" data-tab="specifications">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            Specs
+                        </button>
+                        <button class="tab-btn" data-tab="safety">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                            Safety
+                        </button>
+                        <button class="tab-btn" data-tab="vin-structure">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                            </svg>
+                            Breakdown
+                        </button>
+                    </div>
+
+                    <!-- Tabs Body -->
+                    <div id="tab-vehicle-info" class="tab-content active">
+                        <div id="vehicle-info-grid" class="info-grid"></div>
+                    </div>
+                    <div id="tab-specifications" class="tab-content">
+                        <div id="specs-grid" class="info-grid"></div>
+                    </div>
+                    <div id="tab-safety" class="tab-content">
+                        <div id="safety-grid" class="info-grid"></div>
+                    </div>
+                    <div id="tab-vin-structure" class="tab-content">
+                        <div class="glass-card rounded-xl p-6 border-card">
+                            <h3 class="font-bold text-lg mb-4 dark:text-white">17-Character Breakdown</h3>
+                            <div id="vin-chars-display" class="vin-structure-chars"></div>
+
+                            <div
+                                class="flex justify-center gap-6 mb-6 text-sm font-medium text-gray-600 dark:text-gray-300">
+                                <span class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-sky-500"></span>
+                                    WMI (1-3)</span>
+                                <span class="flex items-center gap-2"><span
+                                        class="w-3 h-3 rounded bg-purple-500"></span> VDS (4-9)</span>
+                                <span class="flex items-center gap-2"><span
+                                        class="w-3 h-3 rounded bg-emerald-500"></span> VIS (10-17)</span>
+                            </div>
+
+                            <div id="structure-details" class="space-y-4"></div>
+                        </div>
+                    </div>
+
+                    <!-- Decode Another -->
+                    <div class="mt-8 text-center border-t border-gray-200 dark:border-gray-800 pt-6">
+                        <button id="decode-another-btn" class="action-btn action-btn-outline px-6">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            Decode Another VIN
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── Recent Searches ────────────── -->
+        <section id="recent-section" class="max-w-4xl mx-auto mt-12 mb-8 hidden">
+            <div class="flex justify-between items-end mb-4 px-2">
+                <h2 class="text-xl md:text-2xl font-bold text-gray-800 dark:text-white flex items-center gap-2">
+                    <svg class="w-6 h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Recent Lookups
+                </h2>
+                <button id="clear-history-btn"
+                    class="text-sm font-semibold text-red-500 hover:text-red-600 transition-colors">Clear All</button>
+            </div>
+            <div id="recent-list" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <!-- Injected closely -->
+            </div>
+        </section>
+
+
+        <!-- ── Supported Brands Slider/Grid ────────────── -->
+        <section class="max-w-4xl mx-auto mt-12 mb-12">
+            <h2 class="text-xl md:text-2xl font-bold text-center mb-6 text-gray-800 dark:text-white">
+                Supported Manufacturers
+            </h2>
+            <div id="brands-grid" class="brand-grid">
+                <!-- Brands pushed here -->
+            </div>
+        </section>
+
+        <!-- ── How to Use Section ────────────── -->
+        <section class="max-w-4xl mx-auto mt-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white">
+                How to Decode a VIN
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Step 1 -->
+                <div class="glass-card rounded-xl p-6 text-center hover-lift">
+                    <div class="step-number mx-auto mb-4 bg-gradient-to-br from-sky-400 to-sky-600 text-white">
+                        1
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Find the VIN</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Locate your 17-character VIN on the driver's
+                        side dashboard, door jamb, or vehicle documents.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="glass-card rounded-xl p-6 text-center hover-lift">
+                    <div class="step-number mx-auto mb-4 bg-gradient-to-br from-purple-400 to-purple-600 text-white">
+                        2
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Paste & Decode</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Enter the alphanumeric code into the input field
+                        above and click "Decode VIN".</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="glass-card rounded-xl p-6 text-center hover-lift">
+                    <div class="step-number mx-auto mb-4 bg-gradient-to-br from-emerald-400 to-emerald-600 text-white">
+                        3
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">View Report</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Instantly receive comprehensive vehicle
+                        specifications, history, and official manufacturer data.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ── Feature Info Cards ────────────── -->
+        <section class="max-w-4xl mx-auto mt-12 grid md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="glass-card rounded-xl p-6 text-center hover-lift">
+                <div
+                    class="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Lightning Fast</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Powered directly by the NHTSA vPIC API for instant,
+                    real-time data retrieval.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="glass-card rounded-xl p-6 text-center hover-lift">
+                <div
+                    class="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">100% Accurate</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Data sourced directly from the official Department
+                    of Transportation vehicle database.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="glass-card rounded-xl p-6 text-center hover-lift">
+                <div
+                    class="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Free & Secure</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">No login required. 100% free with local-only history
+                    saving for maximum privacy.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════
+       TOAST NOTIFICATION
+       ═══════════════════════════════════════ -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+
+    <!-- ═══════════════════════════════════════
+       CUSTOM CURSOR
+       ═══════════════════════════════════════ -->
+    <div class="custom--cursor cursor--outer"></div>
+    <div class="custom--cursor cursor--inner"></div>
+
+
+    <!-- ═══════════════════════════════════════
+       SCRIPTS
+       ═══════════════════════════════════════ -->
+    <script src="./assets/js/cursor.js" defer></script>
+    <script src="./assets/js/theme.js" defer></script>
+    <script src="./assets/js/vin-decoder.js" defer></script>
+
+</body>
+
+</html>
